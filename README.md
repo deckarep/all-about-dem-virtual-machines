@@ -33,6 +33,15 @@ Byterun is a Python bytecode interpret written in Python itself in about 500 LOC
 * [Repo - Byterun Github](https://github.com/nedbat/byterun)
 * [Presentation - 1500 line switch powers Python](https://www.slideshare.net/akaptur/a-1500-line-switch-statement-powers-your-python-allison-kaptur-con-2014)
 
+
+### Stack-based virtual machines
+An incredibly easy to follow 8 part series on creating a simple toy stack VM with very clear code and explanations. The great thing about this tutorial is the unit tests and detailed instruction sets that actually demonstrate working programs.
+
+* [Site ](https://andreabergia.com/stack-based-virtual-machines/)
+* Stack based
+* Java
+* functions, assembler, antlrv4
+
 ### Bytecode - Game Programming Patterns
 This article, demonstrates a simple VM solution written in C++ where the technique of treating code as data to illustrate a simple Domain Specific Language and a VM runtime can be utilized within the context of a game to simplify and express logic in a higher abstraction. (That was a mouthful)
 
