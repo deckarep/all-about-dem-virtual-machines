@@ -5,14 +5,23 @@ Repo for my notes on creating interpreters/virtual machines
 * Language Design
   * EBNF
   * Parser Generators
-    * Antler
-* Lexers/Tokenizers
+    * Antlr
+* Lexers/Tokenizers/Scanners
+  * These words are all used interchangebly
+  * Takes a stream of free-form text and returns tokens
 * Parsers
   * Types of Parsers
+  * Takes a stream of tokens and returns a tree-like structure (AST)
 * Abstract Syntax Trees
+  * Can be walked using Visitor pattern
+    * Output of walking can be runtime interpretation and evaluation
+    * Alternatively can emit compiled bytecode instructions
 * Semantic Analysis
+  * Sets expectations about the meaning of the AST
+    * Example: An if block should have a condition and one or more else blocks
 * Stack-based VMs
   * Push/Pop
+  * Mimics evaluation of expression in [Reverse Polish Notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation)
 * Register-based VMs
   * Register Allocation
 * Tree-walking Interpreters
@@ -33,14 +42,35 @@ Byterun is a Python bytecode interpret written in Python itself in about 500 LOC
 * [Repo - Byterun Github](https://github.com/nedbat/byterun)
 * [Presentation - 1500 line switch powers Python](https://www.slideshare.net/akaptur/a-1500-line-switch-statement-powers-your-python-allison-kaptur-con-2014)
 
+### 16-Bit Virtual Machine in JavaScript
+This series of videos on YouTube demonstrates using JavaScript to create a VM using low-level techniques in a higher-level language.
+
+* [Video 001](https://www.youtube.com/watch?v=fTBwD3sb5mw&t=841s)
+* 16-bit
+* Interrupts
+
+### Simple Virtual Machine - Bartosz Sypytkowski
+Demonstrates a very basic bytecode interpret using C but avoids using any complex constructs. Limited to simple integer operations.
+
+* [Site](https://bartoszsypytkowski.com/simple-virtual-machine/)
+* Stack based
+* C implementation
+* Local/Global storage
+* Jump/Call/Ret instructions
 
 ### Stack-based virtual machines
 An incredibly easy to follow 8 part series on creating a simple toy stack VM with very clear code and explanations. The great thing about this tutorial is the unit tests and detailed instruction sets that actually demonstrate working programs.
 
-* [Site ](https://andreabergia.com/stack-based-virtual-machines/)
+* [Site](https://andreabergia.com/stack-based-virtual-machines/)
 * Stack based
 * Java
 * functions, assembler, antlrv4
+
+### Toy Machine - Robert Sedgewick (Princeton)
+Princeton articles on the specification and implementation of the Toy machine which is a series of articles and exercises on a simple register-based VM.
+
+* [Site](https://introcs.cs.princeton.edu/java/62toy/)
+* Register based
 
 ### Bytecode - Game Programming Patterns
 This article, demonstrates a simple VM solution written in C++ where the technique of treating code as data to illustrate a simple Domain Specific Language and a VM runtime can be utilized within the context of a game to simplify and express logic in a higher abstraction. (That was a mouthful)
@@ -52,7 +82,6 @@ This article, demonstrates a simple VM solution written in C++ where the techniq
 
 ### So you want to build a language VM - Fletcher Haynes
 This blog contains a multi-part (30+) overview of the theory and practice of building of significantly involved feature rich virtual machine. The Part 1 page also contains some great references to yet more VM articles. This series demonstrates code in Rust.
-
 
 * [Site - blog.subnetzero.io](https://blog.subnetzero.io/post/building-language-vm-part-01/)
 
@@ -77,6 +106,8 @@ Comprehensive mini-book that demonstrates an old-school [LC3](https://en.wikiped
 * Talks
   * [How to Build a Virtual Machine](https://youtu.be/OjaAToVkoTw) - Terence Parr
     * [Related Code](https://github.com/parrt/simple-virtual-machine)
+  * [Exploring Python Bytecode - Anjana Vakil](https://www.youtube.com/watch?v=GNPKBICTF2w)
+    * Quick talk on using Python's built-in tooling to understand its internal bytecode opcodes
 
 
   
