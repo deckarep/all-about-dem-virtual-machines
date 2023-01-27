@@ -6,6 +6,7 @@ Repo for my notes on creating interpreters/virtual machines
   * EBNF
   * Parser Generators
     * Antlr
+    * Yacc
 * Lexers/Tokenizers/Scanners
   * These words are all used interchangebly
   * Takes a stream of free-form text and returns tokens
@@ -14,8 +15,25 @@ Repo for my notes on creating interpreters/virtual machines
   * Takes a stream of tokens and returns a tree-like structure (AST)
 * Abstract Syntax Trees
   * Can be walked using Visitor pattern
-    * Output of walking can be runtime interpretation and evaluation
+    * Output of tree-walking can be runtime interpretation and evaluation
     * Alternatively can emit compiled bytecode instructions
+* Compilation Phases
+  * Tokenizing
+    * Takes in a raw source file and breaks up into a stream of tokens
+  * Parsing
+    * Consumes token stream and builds a parse tree representation
+  * Analyzer/Semantic Analysis
+    * Validates semantic meaning of all parse tree nodes/hierarchy
+  * Optimizer
+    * Possibly multi-pass phases to do things such as:
+      * Constant folding
+      * Dead code elimination
+      * Instruction re-ordering
+      * Many more!
+  * Codegen/Emitting
+    * Involves emitting low-level binary instructions
+    * Very compact form and may not be easily human readable
+
 * Semantic Analysis
   * Sets expectations about the meaning of the AST
     * Example: An if block should have a condition and one or more else blocks
@@ -29,9 +47,26 @@ Repo for my notes on creating interpreters/virtual machines
   * Utilizes visitor pattern to walk AST and evaluate
 * Bytecode Virtual Machines
   * Execute raw-byte instructions
+  * Instructions can be fixed-width or variable
   * Understanding Bytecode
     * Opcodes
     * Operands
+* ISA Types
+  * RISC
+    * RISC-V
+    * MIPS
+  * CISC
+    * 6502
+    * x86
+* Various addressing modes
+  * Immediate mode
+  * Register mode
+  * Direct mode/Absolute mode
+  * Indirect mode
+  * Indexed Indirect
+  * Indirect Indexed
+  * PC Relative Offset
+  * Other modes involve: Scaled, Displacement
 
 ## Reference Articles
 
@@ -132,3 +167,21 @@ Due to the nature of these virtual machines being created via the effort of reve
 
 * [Site - Scummvm.org](https://www.scummvm.org/)
 * [Repo - github.com](https://github.com/scummvm/scummvm)
+
+
+## My Favorite Toy Virtual Machines
+
+* 32-bit 
+  * [Vircon32 Fantasy Console](http://www.vircon32.com/)
+    * C-like language, fully-documented ISA
+    * Polished and feature complete
+
+## My Favorite Toy Simulators
+
+* 8-Bit
+  * [8-Bit Simulator](https://exuanbo.xyz/)
+    * Polished UI
+  * [Assembler Simulator](https://schweigi.github.io/assembler-simulator/)
+  * [Easy 6502](https://skilldrick.github.io/easy6502/)
+* 16-Bit
+  * [16-Bit Simulator](https://parraman.github.io/asm-simulator/)
