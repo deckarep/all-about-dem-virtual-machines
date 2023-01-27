@@ -5,8 +5,8 @@ Repo for my notes on creating interpreters/virtual machines
 * Language Design
   * EBNF
   * Parser Generators
-    * Antlr
     * Yacc
+    * Antlr
 * Lexers/Tokenizers/Scanners
   * These words are all used interchangebly
   * Takes a stream of free-form text and returns tokens
@@ -17,7 +17,10 @@ Repo for my notes on creating interpreters/virtual machines
   * Can be walked using Visitor pattern
     * Output of tree-walking can be runtime interpretation and evaluation
     * Alternatively can emit compiled bytecode instructions
-* Compilation Phases
+* Semantic Analysis
+  * Sets expectations about the meaning of the AST
+    * Example: An if block should have a condition and one or more else blocks
+* Phases of compilation
   * Tokenizing
     * Takes in a raw source file and breaks up into a stream of tokens
   * Parsing
@@ -33,15 +36,17 @@ Repo for my notes on creating interpreters/virtual machines
   * Codegen/Emitting
     * Involves emitting low-level binary instructions
     * Very compact form and may not be easily human readable
-
-* Semantic Analysis
-  * Sets expectations about the meaning of the AST
-    * Example: An if block should have a condition and one or more else blocks
 * Stack-based VMs
   * Push/Pop
+  * Still has a few registers for things like SP (stack pointer), PC (program counter)
+  * However all temporary computations are performed on the stack, hence the name: Stack machine
   * Mimics evaluation of expression in [Reverse Polish Notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation)
 * Register-based VMs
   * Register Allocation
+  * Key design: Still uses a stack, however all temporary computations are performed in registers
+  * Some ISA's are true load/store architectures meaning all CPU arithmetic *must* be done in registers therefore you must load reg -> compute -> store reg
+  * Some registers are special purpose despite being classified as general purpose
+  * Registers can be clobbered by other functions so a calling convention is necessary and the stack is utilized for safe-keeping of registers across function calls
 * Tree-walking Interpreters
   * Generally slower than bytecode solutions
   * Utilizes visitor pattern to walk AST and evaluate
@@ -59,14 +64,15 @@ Repo for my notes on creating interpreters/virtual machines
     * 6502
     * x86
 * Various addressing modes
-  * Immediate mode
-  * Register mode
-  * Direct mode/Absolute mode
-  * Indirect mode
+  * Immediate
+  * Register
+  * Direct/Absolute
+  * Indirect
   * Indexed Indirect
   * Indirect Indexed
   * PC Relative Offset
   * Other modes involve: Scaled, Displacement
+  * ISA's support a varying degree of address modes and sometimes not across all opcodes.
 
 ## Reference Articles
 
@@ -161,9 +167,9 @@ Wren is a modern, small and embeddable scripting-language that supports classes 
 
 ### ScummVM
 
-ScummVM is an open-source community-driven effort to build support for old games. The tool actually provides *many* different types of VMs for a myriad of game engines that have been analayzed and reverse engineered for many years now. Two particular game engines are worth reading the source: The first is the AGI (Adventure Game Interpreter) which is Sierra Online's original game interpreter for their mid-1980's games such as King's Quest 1 and Leisure Suit Larry 1. The other is the SCI interpreter which is for a newer generation of games by Sierra Online.
+ScummVM is an open-source community-driven effort to build support for old games. The tool actually provides *many* different types of VMs for a myriad of game engines that have been analayzed and reverse engineered for many years now. Three particular game engines are worth reading the source: The first is the AGI (Adventure Game Interpreter) which is Sierra Online's original game interpreter for their mid-1980's games such as King's Quest 1 and Leisure Suit Larry 1. The second is the SCI interpreter which is for a newer generation of games by Sierra Online. And finally, the Scumm engine itself used for games like: Maniac Mansion, Indiana Jones and the Fate of Atlantis. The original Scumm engine was way ahead of its time utilizing a form of cooperative multi-tasking to elegantly express and build many "moving parts" for these types of games.
 
-Due to the nature of these virtual machines being created via the effort of reverse engineering, they are not always fully implemented or contain hacks/workarounds that the original implementations probably didn't need.
+Due to the nature of these virtual machines being created via the effort of reverse engineering, they are not always fully implemented or contain hacks/workarounds that the original implementations probably didn't need however many games run great.
 
 * [Site - Scummvm.org](https://www.scummvm.org/)
 * [Repo - github.com](https://github.com/scummvm/scummvm)
