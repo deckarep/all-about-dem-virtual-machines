@@ -154,6 +154,16 @@ Comprehensive mini-book that demonstrates an old-school [LC3](https://en.wikiped
   
 ## Production Ready VMS
 
+### Language VMs
+* Lua-based:
+  * Lua
+  * [Luau](https://luau-lang.org/)
+  * [Squirrel](http://squirrel-lang.org/squirreldoc/reference/api/virtual_machine.html)
+  * LuaJit
+* Zig-based:
+  * [Bog](https://github.com/Vexu/bog)
+  * [Lola](https://github.com/MasterQ32/LoLa) 
+
 ### Wren
 Wren is a modern, small and embeddable scripting-language that supports classes and runs on a C-based virtual machine. It uses computed GOTOs in order to get a significant speed increase over having a large switch/case block. Wren is pretty damn fast and supports a light-weight C-language.
 
@@ -174,8 +184,16 @@ Due to the nature of these virtual machines being created via the effort of reve
 * [Site - Scummvm.org](https://www.scummvm.org/)
 * [Repo - github.com](https://github.com/scummvm/scummvm)
 
+## Awesome Lists
+
+* [Awesome Emulators/Simulators](https://github.com/mcicolella/awesome-emulators-simulators)
+
 
 ## My Favorite Toy Virtual Machines
+
+* [Little Virtual Computer](https://jsdf.github.io/little-virtual-computer/computer1)
+  * JavaScript-based with an English-style instruction-set, a visual display and audio!
+  * [Deckarep branch](https://github.com/deckarep/little-virtual-computer)
 
 * 32-bit 
   * [Vircon32 Fantasy Console](http://www.vircon32.com/)
@@ -189,5 +207,7 @@ Due to the nature of these virtual machines being created via the effort of reve
     * Polished UI
   * [Assembler Simulator](https://schweigi.github.io/assembler-simulator/)
   * [Easy 6502](https://skilldrick.github.io/easy6502/)
+  * TODO: find that virtual machine that is javascript skilldrick and has a simple 2d array of colors...that was pretty fun!!!
 * 16-Bit
   * [16-Bit Simulator](https://parraman.github.io/asm-simulator/)
+    * [Great Opcode Docs!](https://asm-simulator.readthedocs.io/en/latest/index.html)
